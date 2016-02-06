@@ -10,6 +10,7 @@ const eventSchema = new Schema({
   name        : String, // Name of the event
   location    : {  type: [Number],  index: '2d'}, // GPS co-ordinates of the event
   city        : String,
+  country     : String,
   address     : String,
   price       : Number,
   currency    : String,

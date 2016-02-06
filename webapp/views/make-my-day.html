@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div id="googleMaps" class="column">
+      <ng-map center="25.2048493, 55.270782800000006" tilt="45" zoom="{{options.zoom}}" map-type-id="SATELLITE">
+
+        <directions draggable="false" travel-mode="DRIVING" destination="{{locations[2].location.lat}}, {{locations[2].location.lng}}" origin="{{locations[0].location.lat}}, {{locations[0].location.lng}}" destination="" waypoints="{{locations}}"></directions>
+        <traffic-layer></traffic-layer>
+      </ng-map>
+    </div>
+  </div>
+</div>
