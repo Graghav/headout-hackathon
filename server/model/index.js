@@ -12,11 +12,14 @@ const eventSchema = new Schema({
   city        : String,
   address     : String,
   price       : Number,
+  currency    : String,
   description : String,
   tags        : [],
-  begin_time  : String,
+  begin_time  : [],
   end_time    : String,
-  total_time  : Number  // Total hrs of the event
+  image       : String,
+  days        : [], // In what days the event occurs
+  total_time  : Number  // Total min of the event
 });
 
 // Schema for the user's customized event
@@ -24,7 +27,7 @@ const userEventSchema = new Schema({
   user_id     : String,
   begin_time  : String, // Begin time of the complete event
   end_time    : String,
-  total_time  : Number, // Total hrs of the event
+  total_time  : Number, // Total min of the event
   events      : [], // Holds all the event objects
   current_status: [] // Holds the history of the events completed/cancelled
 })
