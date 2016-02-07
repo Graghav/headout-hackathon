@@ -46,6 +46,7 @@ tags-input .tags .tag-item .remove-button {
   color: #FFF; }
 
 #timeToSpend {
+  display: inline-block;
   height: 2.6rem;
   border-radius: 1px;
   border: 1px solid #a9a9a9; }

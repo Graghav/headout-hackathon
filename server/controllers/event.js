@@ -17,10 +17,11 @@ const getAllEvents = (req,res,next) => {
 
 const filterEvents = (req,res,next) => {
   let tags = req.params.tags;
-
+  let ntags = req.params.ntags;
   // Filter the events
-  Event.find({ tags: { $in: tags } }, {}, function(err, events) {
+  Event.find({  $and: [ { tags: { $in: tags } }, { tags: { $nin: ntags } }] } , {}, function(err, events) {
     if(err){
+      console.log(err)
       err = new restify.errors.InternalError(err);
       res.send(err);
     }

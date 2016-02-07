@@ -17,16 +17,17 @@ angular
         });
   }
 
-  function getFilterEvents(tags) {
+  function getFilterEvents(tags, ntags) {
     return $http({
           method: 'POST',
           url: URL.events.filter,
-          data: { tags: tags }
+          data: { tags: tags, ntags: ntags }
     })
   }
 
   function getCoordinates(events) {
     return _.map(events, function(e){
+      console.log(e.name)
       return { location: { lat: e.location[0], lng: e.location[1] } , stopover: true };
     })
   }

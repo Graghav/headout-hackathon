@@ -1,18 +1,28 @@
 <div class="container">
   <form action="#">
     <div class="row">
-      <div class="column column-50">
+      <div class="column column-25">
         <fieldset>
-          <label for="nameField">Your Interests</label>
+          <label for="nameField">I like</label>
           <tags-input ng-model="tags" placeholder="Add your Interest">
           </tags-input>
-          <!-- <input type="text" placeholder="Enter your favorites" id="input-interest"> -->
+        </fieldset>
+      </div>
+      <div class="column column-25">
+        <fieldset>
+          <label for="nameField">I don't like</label>
+          <tags-input ng-model="negtags" placeholder="Add your non-interest">
+          </tags-input>
         </fieldset>
       </div>
       <div class="column column-25">
         <fieldset>
           <label for="nameField">Time</label>
-          <input type="text" placeholder="Time you can spend" ng-model="time" id="timeToSpend">
+          <div class="row"></div>
+            <input type="text" class="column column-33" placeholder="Begin Time" ng-model="beginTime" id="timeToSpend">
+            <span class="column column-10" style="display: inline-block">-</span>
+            <input type="text" class="column column-33" placeholder="End Time" ng-model="endTime" id="timeToSpend">
+
         </fieldset>
       </div>
       <div class="column column-25">
@@ -27,12 +37,12 @@
     <div class="column">
       <div class="row">
         <div class="column">
-          <label>{{filtered.length}} make my days available</label>
+          <label>Your customized Make My Day Events</label>
         </div>
       </div>
       <!-- Filtered Events -->
       <div class="row" ng-repeat="f in filtered" style="margin-top:20px">
-        <div class="column <column-3></column-3>3" ng-repeat="e in f.events">
+        <div class="column <column-3></column-33" ng-repeat="e in f.events">
           <div class="demo-card-wide mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title" ng-style="{'background': getImage(e.image) }">
               <h2 class="mdl-card__title-text">{{e.name}}</h2>
