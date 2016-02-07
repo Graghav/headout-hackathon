@@ -1,4 +1,4 @@
-var app = angular.module('headout-webapp', ['ui.router', 'ngMap']);
+var app = angular.module('headout-webapp', ['ui.router', 'ngMap', 'ngTagsInput']);
 
 // Config States and URLs
 

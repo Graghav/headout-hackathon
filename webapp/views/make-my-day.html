@@ -1,10 +1,72 @@
 <div class="container">
-  <div class="row">
+  <form action="#">
+    <div class="row">
+      <div class="column column-50">
+        <fieldset>
+          <label for="nameField">Your Interests</label>
+          <tags-input ng-model="tags" placeholder="Add your Interest">
+          </tags-input>
+          <!-- <input type="text" placeholder="Enter your favorites" id="input-interest"> -->
+        </fieldset>
+      </div>
+      <div class="column column-25">
+        <fieldset>
+          <label for="nameField">Time</label>
+          <input type="text" placeholder="Time you can spend" ng-model="time" id="timeToSpend">
+        </fieldset>
+      </div>
+      <div class="column column-25">
+        <a href="#/make-my-day" ng-click="showMap=1; filterEvents()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="make-my-day-btn">
+          Make My Day
+        </a>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="row" ng-show="filtered.length > 0">
+    <div class="column">
+      <div class="row">
+        <div class="column">
+          <label>{{filtered.length}} make my days available</label>
+        </div>
+      </div>
+      <!-- Filtered Events -->
+      <div class="row" ng-repeat="f in filtered" style="margin-top:20px">
+        <div class="column column-33" ng-repeat="e in f.events">
+          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title" ng-style="{'background': getImage(e.image) }">
+              <h2 class="mdl-card__title-text">{{e.name}}</h2>
+            </div>
+            <!-- <div class="mdl-card__supporting-text">
+              {{e.description}}
+            </div> -->
+            <div class="mdl-card__actions mdl-card--border">
+              <div class="float-left">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  {{e.currency}} {{e.price}}
+                </a>
+              </div>
+              <div class="float-right">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Book
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" ng-style="{ 'opacity': showMap }">
     <div id="googleMaps" class="column">
       <ng-map center="25.2048493, 55.270782800000006" tilt="45" zoom="{{options.zoom}}" map-type-id="SATELLITE">
-
-        <directions draggable="false" travel-mode="DRIVING" destination="{{locations[2].location.lat}}, {{locations[2].location.lng}}" origin="{{locations[0].location.lat}}, {{locations[0].location.lng}}" destination="" waypoints="{{locations}}"></directions>
-        <traffic-layer></traffic-layer>
+        <directions draggable="false" travel-mode="DRIVING" destination="{{locations[locations.length-1].location.lat}}, {{locations[locations.length-1].location.lng}}" origin="{{locations[0].location.lat}}, {{locations[0].location.lng}}" waypoints="{{locations}}"></directions>
+        <custom-marker ng-repeat="e in events" position="{{e.location[0]}} , {{e.location[1]}}">
+          <div class="marker" ng-style="{'background': getImage(e.image) }">
+            <div class="text"> {{e.name}}</div>
+          </div>
+        </custom-marker>
       </ng-map>
     </div>
   </div>

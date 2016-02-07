@@ -16,7 +16,7 @@ const getAllEvents = (req,res,next) => {
 };
 
 const filterEvents = (req,res,next) => {
-  let tags = req.params.tags.split();
+  let tags = req.params.tags;
 
   // Filter the events
   Event.find({ tags: { $in: tags } }, {}, function(err, events) {

@@ -5,7 +5,9 @@ angular
 .factory('EventService', function($http){
   return {
     getAllEvents: getAllEvents,
-    getCoordinates: getCoordinates
+    getCoordinates: getCoordinates,
+    getFilterEvents: getFilterEvents,
+    filterEvents: filterEvents
   };
 
   function getAllEvents() {
@@ -15,10 +17,33 @@ angular
         });
   }
 
+  function getFilterEvents(tags) {
+    return $http({
+          method: 'POST',
+          url: URL.events.filter,
+          data: { tags: tags }
+    })
+  }
+
   function getCoordinates(events) {
     return _.map(events, function(e){
       return { location: { lat: e.location[0], lng: e.location[1] } , stopover: true };
     })
+  }
+
+  function filterEvents(events, time){
+      var combined = combination(events);
+
+      var reduced = _.map(combined, function(c){
+        return { events: c, time: (c.length == 1) ? (c[0].total_time) : _.reduce(c, function(e,d) {
+            return (e.total_time || 0) + (d.total_time || 0)
+          }, 0)
+        }
+      })
+
+      return _.filter(reduced, function(r){
+        return r.time <= time;
+      })
   }
 
 })

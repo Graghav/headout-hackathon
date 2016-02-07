@@ -28,7 +28,7 @@ server.get('/', function(req,res) {
 
 // Routes for the actions
 server.get('/events/all', controller.EVENT.getAllEvents);
-server.post('/events/filter/:tags', controller.EVENT.filterEvents);
+server.post('/events/filter', controller.EVENT.filterEvents);
 
 // If this service run as a standalone app
 if (!module.parent) {
