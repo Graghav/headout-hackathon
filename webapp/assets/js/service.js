@@ -34,13 +34,23 @@ angular
 
   function filterEvents(events, time){
       var combined = combination(events);
-
+      var tmp_price = 0;
       var reduced = _.map(combined, function(c){
-        return { events: c, time: (c.length == 1) ? (c[0].total_time) : _.reduce(c, function(e,d) {
-            return (e.total_time || 0) + (d.total_time || 0)
-          }, 0)
+
+        tmp_price = 0;
+        
+        _.each(c, function(x,i) {
+               tmp_price += x.price;
+         })
+
+        return { events: c,
+                 time: (c.length == 1) ? (c[0].total_time) : _.reduce(c, function(e,d) {
+                          return (e.total_time || 0) + (d.total_time || 0)
+                        }, 0),
+                 price: tmp_price
         }
       })
+
 
       return _.filter(reduced, function(r){
         return r.time <= time;

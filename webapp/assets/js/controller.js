@@ -6,6 +6,12 @@ angular
     // Init the events
     $scope.events = [];
 
+    setInterval(function(){
+      $(".slider").flexslider({ minItems: 3, maxItems: 3, move: 3, animation: "slide"  });
+
+    },1000)
+
+
     // Get all the events from the REST server
     EventService.getAllEvents()
     .then(function(response){
@@ -43,8 +49,8 @@ angular
 
   $scope.filterEvents = function() {
     // Filter the events
-    var tags = _.pluck($scope.tags,'text');
-    var ntags= _.pluck($scope.negtags, 'text');
+    var tags   = _.pluck($scope.tags,'text');
+    var ntags  = _.pluck($scope.negtags, 'text');
     // Find time diff
     var date1 = new Date(current.year, current.month, current.date,  $scope.beginTime.slice(0,$scope.beginTime.indexOf(".")), 0);
     var date2 = new Date(current.year, current.month, current.date,  $scope.endTime.slice(0, $scope.endTime.indexOf(".")), 0);
@@ -59,9 +65,15 @@ angular
 
     EventService.getFilterEvents(tags,ntags).then(function(response) {
       $scope.events = response.data;
-      var tmpFilter =  _.sortBy(EventService.filterEvents($scope.events, $scope.time), function(events){
+      var tmpFilter =  _.sortBy(EventService.filterEvents($scope.events, $scope.time, $scope.budget), function(events){
         return events.length;
       }).reverse();
+
+    //  $scope.filtered = tmpFilter;
+
+      tmpFilter = _.filter(tmpFilter, function(t){
+        return t.price <= $scope.budget;
+      })
 
       if(tmpFilter[0].events.length >= $scope.events.length-1){
         $scope.filtered = tmpFilter.splice(0,1);

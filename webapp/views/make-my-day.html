@@ -1,16 +1,16 @@
 <div class="container">
   <form action="#">
     <div class="row">
-      <div class="column column-25">
+      <div class="column column-20">
         <fieldset>
           <label for="nameField">I like</label>
           <tags-input ng-model="tags" placeholder="Add your Interest">
           </tags-input>
         </fieldset>
       </div>
-      <div class="column column-25">
+      <div class="column column-20">
         <fieldset>
-          <label for="nameField">I don't like</label>
+          <label for="nameField">I don't prefer</label>
           <tags-input ng-model="negtags" placeholder="Add your non-interest">
           </tags-input>
         </fieldset>
@@ -23,6 +23,12 @@
             <span class="column column-10" style="display: inline-block">-</span>
             <input type="text" class="column column-33" placeholder="End Time" ng-model="endTime" id="timeToSpend">
 
+        </fieldset>
+      </div>
+      <div class="column column-20">
+        <fieldset>
+            <label for="nameField"> Budget</label>
+              <input type="text" class="column column-33" placeholder="Budget" ng-model="budget" id="timeToSpend">
         </fieldset>
       </div>
       <div class="column column-25">
@@ -42,24 +48,34 @@
       </div>
       <!-- Filtered Events -->
       <div class="row" ng-repeat="f in filtered" style="margin-top:20px">
-        <div class="column <column-3></column-33" ng-repeat="e in f.events">
-          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title" ng-style="{'background': getImage(e.image) }">
-              <h2 class="mdl-card__title-text">{{e.name}}</h2>
+        <div class="column">
+          <div class="row">
+            <div class="column">
+              <label>Trip #{{$index+1}} : AED {{f.price}} </label>
             </div>
-            <!-- <div class="mdl-card__supporting-text">
-              {{e.description}}
-            </div> -->
-            <div class="mdl-card__actions mdl-card--border">
-              <div class="float-left">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  {{e.currency}} {{e.price}}
-                </a>
-              </div>
-              <div class="float-right">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Book
-                </a>
+          </div>
+          <br>
+          <div class="row">
+            <div class="column <column-3></column-33" ng-repeat="e in f.events">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title" ng-style="{'background': getImage(e.image) }">
+                  <h2 class="mdl-card__title-text">{{e.name}}</h2>
+                </div>
+                <!-- <div class="mdl-card__supporting-text">
+                  {{e.description}}
+                </div> -->
+                <div class="mdl-card__actions mdl-card--border">
+                  <div class="float-left">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      {{e.currency}} {{e.price}}
+                    </a>
+                  </div>
+                  <div class="float-right">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      Book
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
