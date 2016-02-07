@@ -11,6 +11,7 @@ angular
 
     },100)
 
+    $scope.vm = {};
 
     // Get all the events from the REST server
     EventService.getAllEvents()

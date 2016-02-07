@@ -18,16 +18,16 @@ main {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background-size: cover !important;
+  background-size: 100% !important;
   background-position-y: -60px !important; }
 
 .demo-card-wide > .mdl-card__menu {
   color: #fff; }
 
 #googleMaps {
-  height: 500px; }
+  height: 600px; }
   #googleMaps ng-map {
-    height: 500px; }
+    height: 600px; }
 
 tags-input {
   margin-top: 10px; }
