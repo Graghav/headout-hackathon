@@ -1,0 +1,33 @@
+<ion-view view-title="Make My Day - Results" cache-view="false" enable-menu-with-back-views="false">
+    <ion-nav-buttons side="left">
+      <button class="button icon ion-android-arrow-back" ng-controller="utils" ng-click="go('back')"></button>
+    </ion-nav-buttons>
+
+	<ion-content overflow-scroll="true" animation="slide-left-right">
+
+        <h5 class="content-title padding-horizontal" style="color:#5C5C5C !important">Your Make My Day Trip Details</h5>
+
+        <div class="row" ng-repeat="f in filtered">
+          <div class="column">
+            <div class="row">
+              <div class="column">
+                <label>Trip #{{$index+1}} : AED {{f.price}} </label>
+              </div>
+            </div>
+            <div class="row" ng-repeat="e in f.events">
+              <div class="card item filter-cards" ng-style="{'background': getImageURL(e.image) }">
+
+                <h5 class='title'>{{e.name}}</h5>
+                <h6 class="time"><i class="ion-android-time"></i> &nbsp; For {{e.total_time}} min</h6>
+                <h5 class='price'>From {{e.currency}} {{e.price}} <i class="ion-chevron-right" style="font-size: 12px"></i> </h5>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+	</ion-content>
+
+</ion-view>

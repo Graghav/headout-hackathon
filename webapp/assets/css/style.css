@@ -18,7 +18,7 @@ main {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background-size: 100% !important;
+  background-size: cover !important;
   background-position-y: -60px !important; }
 
 .demo-card-wide > .mdl-card__menu {

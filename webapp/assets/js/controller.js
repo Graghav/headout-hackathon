@@ -9,7 +9,7 @@ angular
     setInterval(function(){
       $(".slider").flexslider({ minItems: 3, maxItems: 3, move: 3, animation: "slide"  });
 
-    },1000)
+    },100)
 
 
     // Get all the events from the REST server
@@ -61,7 +61,6 @@ angular
 
     tmpTime = date2 - date1;
     $scope.time = Math.floor(tmpTime / 1000 / 60);
-    console.log($scope.time)
 
     EventService.getFilterEvents(tags,ntags).then(function(response) {
       $scope.events = response.data;
