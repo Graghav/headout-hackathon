@@ -84,16 +84,25 @@
     </div>
   </div>
   <br>
+  <div class="row" ng-show="filtered.length > 0">
+    <div class="column">
+      <label>Maps & Direction</label>
+    </div>
+  </div>
+  <br>
   <div class="row" ng-style="{ 'opacity': showMap }">
-    <div id="googleMaps" class="column">
+    <div id="googleMaps" class="column column-50">
       <ng-map center="25.2048493, 55.270782800000006" tilt="45" zoom="{{options.zoom}}" map-type-id="SATELLITE">
-        <directions draggable="false" travel-mode="DRIVING" destination="{{locations[locations.length-1].location.lat}}, {{locations[locations.length-1].location.lng}}" origin="{{locations[0].location.lat}}, {{locations[0].location.lng}}" waypoints="{{locations}}"></directions>
+        <directions draggable="false" panel="directions-panel" travel-mode="DRIVING" destination="{{locations[locations.length-1].location.lat}}, {{locations[locations.length-1].location.lng}}" origin="{{locations[0].location.lat}}, {{locations[0].location.lng}}" waypoints="{{locations}}"></directions>
         <custom-marker ng-repeat="e in events" position="{{e.location[0]}} , {{e.location[1]}}">
           <div class="marker" ng-style="{'background': getImage(e.image) }">
             <div class="text"> {{e.name}}</div>
           </div>
         </custom-marker>
       </ng-map>
+    </div>
+    <div class="column" style="overflow:scroll">
+      <div id="directions-panel" style="height:200px"></div>
     </div>
   </div>
 </div>

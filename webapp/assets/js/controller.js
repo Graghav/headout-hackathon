@@ -43,6 +43,7 @@ angular
     month : d.getMonth(),
     year  : d.getYear()
   };
+  
 
   $scope.getImage = function(image) {
     return 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(http://localhost:3000/assets/img/events/'+image+')';

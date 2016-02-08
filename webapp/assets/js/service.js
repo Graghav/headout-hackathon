@@ -38,7 +38,7 @@ angular
       var reduced = _.map(combined, function(c){
 
         tmp_price = 0;
-        
+
         _.each(c, function(x,i) {
                tmp_price += x.price;
          })
@@ -51,6 +51,7 @@ angular
         }
       })
 
+      console.log(reduced)
 
       return _.filter(reduced, function(r){
         return r.time <= time;
